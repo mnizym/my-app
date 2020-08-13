@@ -54,8 +54,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "lint": "eslint --ext .js src",
-    "lint:fix": "eslint --fix --ext .js src"
+    "lint": "eslint --ext src/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
+    "lint:fix": "eslint --fix --ext src/**/*.js"
   },
   "browserslist": {
     "production": [
@@ -137,7 +137,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
+      "npm run lint:fix"
     ]
   },
   "babel": {
