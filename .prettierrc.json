@@ -1,7 +1,6 @@
 {
   "singleQuote": true,
   "trailingComma": "es5",
-  "printWidth": 150,
   "proseWrap": "never",
   "extends": [
     "plugin:prettier/recommended",
