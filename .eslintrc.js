@@ -22,5 +22,10 @@ module.exports = {
   },
   settings: {
     polyfills: ['fetch', 'promises'],
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
   },
 };
