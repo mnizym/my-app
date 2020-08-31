@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 import Loadable from 'react-loadable';
 
-// 动态加载方案一：使用Loadable
+// 动态加载：使用Loadable
 const LoadableComponent = Loadable({
   loader: () => import('./Topics'),
   loading:  () => {
@@ -26,52 +26,7 @@ const About = () => (
   <div>
     <h2>About</h2>
   </div>
-)
-
-// 动态加载方案二：使用lazy
-const OtherComponent = React.lazy(() => import('./Topics'));
-function MyComponent(props) {
-  return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <OtherComponent {...props}/>
-      </Suspense>
-    </div>
-  );
-}
-
-// 动态加载方案三：手动封装一个组件，用来处理import()的加载状态组件 怎么展示
-// 方案1、2、3都是处理在import动态导入没有resolve的时候，手动返一个可以替代的loading组件
-class MyCom extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Component: null,
-    }
-  }
-  
-  getComponent = () => import('./Topics');
-  
-  async componentWillMount() {
-    
-    if (this.state.Component) return
-    
-    const Component = await this.getComponent()
-    
-    if (Component) {
-      this.setState({Component: Component.default ? Component.default : Component})
-    }
-  }
-  
-  render() {
-    const {Component} = this.state;
-    return Component ? <Component {...this.props} /> :
-      <div style={{fontSize: 18, color: '#aaa', textAlign: 'center', marginTop: 40}}>
-        加载中...
-      </div>
-  }
-}
-
+);
 
 const BasicExample = () => (
   <Router>
@@ -86,7 +41,7 @@ const BasicExample = () => (
       
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
-      <Route path="/topics" component={MyCom}/>
+      <Route path="/topics" component={LoadableComponent}/>
     </div>
   </Router>
 )
