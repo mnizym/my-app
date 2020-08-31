@@ -40,7 +40,7 @@ function MyComponent(props) {
   );
 }
 
-// 动态加载方案三：手动封装一个组件，用来处理import()的加载状态组件怎么展示
+// 动态加载方案三：手动封装一个组件，用来处理import()的加载状态组件 怎么展示
 // 方案1、2、3都是处理在import动态导入没有resolve的时候，手动返一个可以替代的loading组件
 class MyCom extends Component {
   constructor(props) {
