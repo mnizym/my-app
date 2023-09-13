@@ -138,6 +138,9 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5"
   },
+  "optionalDependencies": {
+    "fsevents": "~2.3.2"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
